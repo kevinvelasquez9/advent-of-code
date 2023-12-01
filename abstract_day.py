@@ -5,6 +5,7 @@ class AbstractDay(ABC):
     def __init__(self, year, day):
         self.input_file_path = f"./{year}/inputs/input{day}.txt"
         self.input = self._read_input()
+        self.lines = self.input.splitlines()
 
     @abstractmethod
     def part1(self):
