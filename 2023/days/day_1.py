@@ -7,7 +7,7 @@ class Day1(AbstractDay):
 
     def part1(self):
         total = 0
-        for line in self.input.splitlines():
+        for line in self.lines:
             num = ""
             for c in line:
                 if c.isdigit():
@@ -30,7 +30,7 @@ class Day1(AbstractDay):
         words_lens = [3, 4, 5]
 
         total = 0
-        for line in self.input.splitlines():
+        for line in self.lines:
             num = ""
             for i, c in enumerate(line):
                 if c.isdigit():
