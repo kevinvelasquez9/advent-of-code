@@ -2,9 +2,6 @@ from abstract_day import AbstractDay
 
 
 class Day1(AbstractDay):
-    def __init__(self):
-        super().__init__(2023, 1)
-
     def part1(self):
         total = 0
         for line in self.lines:
