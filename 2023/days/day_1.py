@@ -8,35 +8,23 @@ class Day1(AbstractDay):
     def part1(self):
         total = 0
         for line in self.lines:
-            num = ""
+            digits = []
             for c in line:
                 if c.isdigit():
-                    num += c
-            total += int(num[0] + num[-1])
+                    digits.append(c)
+            total += int(digits[0] + digits[-1])
         return total
 
     def part2(self):
-        words = {
-            "one": "1",
-            "two": "2",
-            "three": "3",
-            "four": "4",
-            "five": "5",
-            "six": "6",
-            "seven": "7",
-            "eight": "8",
-            "nine": "9"
-        }
-        words_lens = [3, 4, 5]
-
+        words = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
         total = 0
         for line in self.lines:
-            num = ""
+            digits = []
             for i, c in enumerate(line):
                 if c.isdigit():
-                    num += c
-                for w_len in words_lens:
-                    if i + w_len <= len(line) and line[i:i + w_len] in words:
-                        num += words[line[i:i + w_len]]
-            total += int(num[0] + num[-1])
+                    digits.append(c)
+                for j, word in enumerate(words):
+                    if line[i:].startswith(word):
+                        digits.append(str(j + 1))
+            total += int(digits[0] + digits[-1])
         return total
