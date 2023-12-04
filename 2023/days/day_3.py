@@ -2,16 +2,17 @@ from abstract_day import AbstractDay
 
 
 def _explore(grid, r, c):
-    total = 0
+    part1 = 0
     hits = []
     for dr in [-1, 0, 1]:
         for dc in [-1, 0, 1]:
             rr, cc = r + dr, c + dc
             if 0 <= rr < len(grid) and 0 <= cc < len(grid[rr]) and grid[rr][cc].isdigit():
                 part_num = _get_part_num(grid[rr], cc)
-                total += part_num
+                part1 += part_num
                 hits.append(part_num)
-    return total, hits[0] * hits[1] if len(hits) == 2 else 0
+    part2 = hits[0] * hits[1] if len(hits) == 2 else 0
+    return part1, part2
 
 
 def _get_part_num(row, c):
