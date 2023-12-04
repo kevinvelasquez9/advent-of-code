@@ -23,11 +23,7 @@ def run_day(year, day, ex):
         day_module = __import__(module_name, fromlist=[class_name])
         day_class = getattr(day_module, class_name)
         day_instance = day_class(year, day, ex)
-        if day > 1:
-            print()
-        print(f"day {day}")
-        print(f"  part 1: {day_instance.part1()}")
-        print(f"  part 2: {day_instance.part2()}")
+        print(day_instance)
     except ModuleNotFoundError:
         pass
 

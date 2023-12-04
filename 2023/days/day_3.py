@@ -1,7 +1,7 @@
 from abstract_day import AbstractDay
 
 
-def _explore(grid, r, c):
+def _explore(grid, r, c) -> tuple[int, int]:
     part1 = 0
     hits = []
     for dr in [-1, 0, 1]:
@@ -15,7 +15,7 @@ def _explore(grid, r, c):
     return part1, part2
 
 
-def _get_part_num(row, c):
+def _get_part_num(row, c) -> int:
     row_ = row.copy()
     left = right = c
     while left > 0 and row[left - 1].isdigit():

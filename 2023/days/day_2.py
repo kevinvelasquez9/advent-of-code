@@ -1,7 +1,7 @@
 from abstract_day import AbstractDay
 
 
-def _max_color_counts(sets):
+def _max_color_counts(sets) -> tuple[int, int, int]:
     mr = mg = mb = 0
     for s in sets.split("; "):
         m = {"red": 0, "green": 0, "blue": 0}

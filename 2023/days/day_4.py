@@ -1,7 +1,7 @@
 from abstract_day import AbstractDay
 
 
-def _get_num_hits(line):
+def _get_num_hits(line) -> int:
     hits = 0
     _, s = line.split(": ")
     s = ' '.join(s.split())
