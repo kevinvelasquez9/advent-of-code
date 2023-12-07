@@ -36,7 +36,7 @@ class Day3(AbstractDay):
         _, total = self._solve()
         return total
 
-    def _solve(self):
+    def _solve(self) -> tuple[int, int]:
         part1 = part2 = 0
         grid = [[c for c in line] for line in self.lines]
         for r in range(len(grid)):
