@@ -2,12 +2,10 @@ from abstract_day import AbstractDay
 
 
 def five(h, js):
-    if len(h) == 0:
-        return True
     for c in h:
         if h.count(c) == 5 - js:
             return True
-    return False
+    return len(h) == 0
 
 
 def four(h, js):
@@ -18,8 +16,8 @@ def house(h, js):
     for c in h:
         for j in range(1 + js):
             if h.count(c) == 3 - j:
-                p = h.replace(c, "")
-                if p[0] == p[1] or js - j > 0:
+                h_ = h.replace(c, "")
+                if h_[0] == h_[1] or js - j > 0:
                     return True
     return False
 
@@ -48,10 +46,10 @@ def high(h, js):
     return True
 
 
-def score(h, wilds):
+def score(h, use_wilds):
     fs = [five, four, house, three, two_pairs, pair, high]
     for i, f in enumerate(fs):
-        to_replace = "J" if wilds else " "
+        to_replace = "J" if use_wilds else " "
         if f(h.replace(to_replace, ""), h.count(to_replace)):
             return len(fs) - i
 
@@ -69,13 +67,13 @@ class Day7(AbstractDay):
             True
         )
 
-    def _solve(self, order, wilds):
+    def _solve(self, order, use_wilds):
         ranks = {c: len(order) - i for i, c in enumerate(order)}
         scores = []
         for line in self.lines:
             hand, bid = line.split(" ")
             rs = tuple([ranks[d] for d in hand])
-            scores.append((score(hand, wilds), *rs, int(bid)))
+            scores.append((score(hand, use_wilds), *rs, int(bid)))
         scores.sort(reverse=True)
         ans = 0
         for i, s in enumerate(scores):
