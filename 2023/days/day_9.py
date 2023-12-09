@@ -14,8 +14,7 @@ class Day9(AbstractDay):
             nums = [int(x) for x in line.split()]
             diffs = [nums[::-1] if reverse else nums]
             while sum(diffs[-1]) != 0:
-                last, new = diffs[-1], []
-                new = [last[i + 1] - last[i] for i in range(len(last) - 1)]
-                diffs.append(new)
+                last = diffs[-1]
+                diffs.append([last[i + 1] - last[i] for i in range(len(last) - 1)])
             ans += sum([diff[-1] for diff in diffs])
         return ans
