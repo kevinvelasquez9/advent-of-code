@@ -11,9 +11,8 @@ class Day9(AbstractDay):
     def _solve(self, reverse):
         ans = 0
         for line in self.lines:
-            orig_nums = [int(x) for x in line.split()]
-            orig_nums = orig_nums[::-1] if reverse else orig_nums
-            diffs = [orig_nums.copy()]
+            nums = [int(x) for x in line.split()]
+            diffs = [nums[::-1] if reverse else nums]
             while sum(diffs[-1]) != 0:
                 last, new = diffs[-1], []
                 new = [last[i + 1] - last[i] for i in range(len(last) - 1)]
